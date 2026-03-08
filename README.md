@@ -35,7 +35,7 @@ y buenas prácticas en arquitectura y diseño de aplicaciones backend.
 
 ## 3. Acceso al proyecto
 
- * [Repositorio](https://github.com/Mabeliris/Literalura)
+ * [Repositorio](https://github.com/Mabeliris/Foro-Hub)
  - Puedes descargar el proyecto como ZIP o clonarlo usando Git
  - Ejecutalo en tu entorno local
 

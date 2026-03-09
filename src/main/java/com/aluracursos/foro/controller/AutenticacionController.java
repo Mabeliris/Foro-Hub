@@ -1,6 +1,8 @@
 package com.aluracursos.foro.controller;
 
 import com.aluracursos.foro.domain.usuarios.DatosAutenticacion;
+import com.aluracursos.foro.domain.usuarios.Usuario;
+import com.aluracursos.foro.infra.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +19,15 @@ public class AutenticacionController {
      @Autowired
     private AuthenticationManager manager;
 
+     @Autowired
+     private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity iniciarSesion(@RequestBody @Valid DatosAutenticacion datos){
         var token= new UsernamePasswordAuthenticationToken(datos.correoElectronico(),datos.contrasena());
         var autenticacion= manager.authenticate(token);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(tokenService.generarToken((Usuario) autenticacion.getPrincipal()));
 
     }
 
